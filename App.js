@@ -79,7 +79,7 @@ class Inputs extends Component {
     this.setState({ result: "", number1: 0, number2: 0 });
     this.number1.clear();
     this.number2.clear();
-    this.number1.focus()
+    this.number1.focus();
   };
 
   render() {
@@ -93,9 +93,7 @@ class Inputs extends Component {
           ]}
         >
           <Text style={[styles.textInfo, styles.bold]}>Resultado</Text>
-          <Text style={styles.textInfo}>
-            {this.state.result !== "" ? this.state.result.toFixed(1) : ""}
-          </Text>
+          <Text style={styles.textInfo}>{isNaN(this.state.result) ? '' : this.state.result}</Text>
         </View>
 
         <View style={styles.box}>
@@ -105,7 +103,9 @@ class Inputs extends Component {
               underlineColorAndroid="gray"
               placeholder="Number 1"
               autoCapitalize="none"
-              ref= {(el) => { this.number1 = el; }}
+              ref={el => {
+                this.number1 = el;
+              }}
               onChangeText={this.handleNumber1}
             />
 
@@ -115,7 +115,9 @@ class Inputs extends Component {
               placeholder="Number 2"
               autoCapitalize="none"
               onChangeText={this.handleNumber2}
-              ref= {(el) => { this.number2 = el; }}
+              ref={el => {
+                this.number2 = el;
+              }}
             />
           </View>
 
